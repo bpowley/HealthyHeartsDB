@@ -13,10 +13,13 @@ dataPerYear %>%
   head()
 
 dataPerYear %>%
-  gather(Year, )
-  ggplot(aes()) + 
-  geom_smooth(aes(x = Year, y = Elementary, color = "Elementary")) +
-  geom_smooth(aes(x = Year, y = Middle, color = "Middle")) + 
-  geom_smooth(aes(x = Year, y= High, color = "High"))
+  filter(Year %in% c(1992:2017)) %>%
+  ggplot(aes(Year)) + 
+  geom_smooth(aes(y = Elementary, color = "Elementary")) +
+  geom_smooth(aes(y = Middle, color = "Middle")) + 
+  geom_smooth(aes( y= High, color = "High")) + 
+  ylab( "Number of Students Surveyed") + 
+  scale_x_continuous(breaks = pretty(dataPerYear$Year, n = 10)) +
+  ggtitle("Trajectory of Data Growth 1992 - 2017")
   
   
